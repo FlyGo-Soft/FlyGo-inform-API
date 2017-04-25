@@ -10,7 +10,6 @@
   Возможные случаи изменения запроса:
   получение ознакомительной информации о пользователе
 
-
   Данный метод на вход принимает следующие параметры:
 
 + Параметр `account` содержит `login` `password` в зашифрованном виде (Подробнее в разделе Защита, пункт 1)
@@ -70,20 +69,21 @@
                 "charge": 50,
                 "payment_period": "month",
                 "features": [
-                {
-                  "title": "Интернет",
-                  "list": [
-                    "Входящая/исходящая скорости в Интернет до 15 Мбит/с",
-                    "Скорость внутри сети до 100 Мбит/c"
-                  ]
-                },
-                {
-                  "title": "ТВ HD",
-                  "list": [
-                    "100 цифровых телеканалов",
-                    "250 Телеканалов HD"
-                  ]
-                }
+                    {
+                      "title": "Интернет",
+                      "list": [
+                        "Входящая/исходящая скорости в Интернет до 15 Мбит/с",
+                        "Скорость внутри сети до 100 Мбит/c"
+                      ]
+                    },
+                    {
+                      "title": "ТВ HD",
+                      "list": [
+                        "100 цифровых телеканалов",
+                        "250 Телеканалов HD"
+                      ]
+                    }
+                ]
             }
         ],
         "payment_history": [
@@ -381,8 +381,6 @@
 + + Параметр `personalAccounts` массив, содержит объекты с данными о номере счета клиента
 + + + Параметр `id` содержит номер счета клиента
 
-
-
 ## Защита
 
 ### 1) Передача логина и пароля в запросах
@@ -392,6 +390,7 @@
   Пароль пользователя шифруется с помощью алгоритма AES_256_CTR с ключом (md5 от уникальной вашей соли), или используется хеширование md5 от пароля (в этом случае шифрование не обратимое). Мы даем вам выбор по типу шифрования (обратимое или нет). В примере указан AES. Логин остается открытым
 
   Пример выходных данных 1 этапа (PHP):
+
   ```php
   array('username' => 'demo_login', 'password' => 'H069Vzs7OzuJ1b7zggDjFnI/g2RG')
   ```
@@ -405,9 +404,10 @@
   Далее логин и пароль шифруются с помощью Rijndael 256 с вашим уникальным ключем
 
   Пример выходных данных 2 этапа (JSON):
+
   ```json
   {
-    "account":"i6Gc/L1NACdey+/Erna3oqRSV3+TIIoRQro+4AG7cEqY1I/4fabHHQgDanApqKT2X8qLHljbMQUZDIQUzQJWJHMAlo5t7vHW0J6sIH9xadCx0eyEk7UvA2FMXjMn2fOudZYWmhLpc7ydBjIE5Suf832l91ZaGvysAtz2TLIBmm7ydLrQLj+DdXailw/3qtWoQEnXWYnaTZMAr5kjBch+/A==|L5ke2oSfANK6fQvpxiCOi4A1C07BPKitaPrF6aK9M+w=“
+    "account":"i6Gc/L1NACdey+/Erna3oqRSV3+TIIoRQro+4AG7cEqY1I/4fabHHQgDanApqKT2X8qLHljbMQUZDIQUzQJWJHMAlo5t7vHW0J6sIH9xadCx0eyEk7UvA2FMXjMn2fOudZYWmhLpc7ydBjIE5Suf832l91ZaGvysAtz2TLIBmm7ydLrQLj+DdXailw/3qtWoQEnXWYnaTZMAr5kjBch+/A==|L5ke2oSfANK6fQvpxiCOi4A1C07BPKitaPrF6aK9M+w="
   }
   ```
 
